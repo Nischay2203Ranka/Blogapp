@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Blog App</string>
+    <string name="title_activity_drawer_actvity">DrawerActvity</string>
+    <string name="nav_header_title">Blog App</string>
+    <string name="nav_header_subtitle">youtube.com/artorean</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Publish Blog</string>
+    <string name="menu_slideshow">Profile</string>
+
+</resources>
