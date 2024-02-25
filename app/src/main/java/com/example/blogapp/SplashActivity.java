@@ -3,8 +3,10 @@ package com.example.blogapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.blogapp.databinding.ActivitySplashBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -53,7 +55,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onStart() {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
-            //show homescreen
+            startActivity(new Intent(this , DrawerActivity.class));
+            finish();
         } else {
 
             sigin();
@@ -77,8 +80,16 @@ public class SplashActivity extends AppCompatActivity {
                 auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(getApplicationContext(),"Login Successful " , Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), DrawerActivity.class));
+                            finish();
+                        }
+                        else {
 
-
+                            Toast.makeText(getApplicationContext(),"Login Failed " , Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
                     }
                 });
             }
