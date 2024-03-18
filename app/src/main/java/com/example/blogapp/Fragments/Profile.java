@@ -101,5 +101,11 @@ public class Profile extends Fragment {
                     }
                 });
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding=null;
+    }
+
 
 }
